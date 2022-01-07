@@ -1,4 +1,6 @@
-# blacktip
+# BLACKTIP :shark:
+
+Helpers, utilities and so on...
 
 <p align="center">
     <a href="https://circleci.com/gh/elbuild/blacktip"><img src="https://img.shields.io/circleci/project/github/elbuild/blacktip.svg?style=flat-square" /><a>
