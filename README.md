@@ -22,7 +22,7 @@ npm run build
 npm run build:watch
 ```
 
-### Build Watch
+### Run test
 ```
 npm run test
 ```
