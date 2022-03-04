@@ -1,4 +1,4 @@
-import { endOfDay, newDate, startOfDay } from '../modules/date';
+import { endOfDay, firstDayOfWeek, firstDayOfYear, lastDayOfMonth, newDate, numberOfDaysInMonth, startOfDay } from '../modules/date';
 
 
 describe('date module', () => {
@@ -27,7 +27,7 @@ describe('date module', () => {
 
 	});
 
-	it('should create a new date obj with 0 hours, 0 minuts and so on ', () => {
+	it('should return a new date obj with 0 hours, 0 minuts and so on ', () => {
 		const value = startOfDay(realdate);
 		expect(value.getFullYear()).toBe(realdate.getFullYear());
 		expect(value.getMonth()).toBe(realdate.getMonth());
@@ -38,7 +38,7 @@ describe('date module', () => {
 
 	});
 
-	it('should create a new date obj with 23 hours, 59 minuts and so on ', () => {
+	it('should return a new date obj with 23 hours, 59 minuts and so on ', () => {
 		const value = endOfDay(realdate);
 		expect(value.getFullYear()).toBe(realdate.getFullYear());
 		expect(value.getMonth()).toBe(realdate.getMonth());
@@ -46,6 +46,30 @@ describe('date module', () => {
 		expect(value.getHours()).toBe(23);
 		expect(value.getMinutes()).toBe(59);
 		expect(value.getSeconds()).toBe(59);
+
+	});
+
+	it('set first day of the week ', () => {
+		const value = firstDayOfWeek(realdate);
+		expect(value.getFullYear()).toBe(realdate.getFullYear());
+		expect(value.getMonth()).toBe(realdate.getMonth());
+	});
+
+	it('set last day of the month ', () => {
+		const value = lastDayOfMonth(realdate);
+		expect(value.getFullYear()).toBe(realdate.getFullYear());
+		expect(value.getMonth()).toBe(realdate.getMonth());
+	});
+
+	it('counts the number of days in a given month (from date obj)', () => {
+		const value = numberOfDaysInMonth(realdate.getFullYear(), realdate.getMonth());
+		expect(value).toBeGreaterThanOrEqual(28);
+	});
+
+	it('returns first day of the year', () => {
+		const value = firstDayOfYear(realdate);
+		expect(value.getFullYear()).toBe(realdate.getFullYear());
+		expect(value.getMonth()).toBe(0);
 
 	});
 
