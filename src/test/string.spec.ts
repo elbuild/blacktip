@@ -1,4 +1,4 @@
-import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel } from '../modules/string';
+import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless } from '../modules/string';
 
 describe('string module', () => {
 	it('check empty string', () => {
@@ -21,11 +21,16 @@ describe('string module', () => {
 		expect(leftPad('1', 2, '0')).toBe('01');
 	})
 
-	it('check first letter', () => {
+	it('check capitalize first letter', () => {
 		expect(capitalize('elbuild')).toBe('Elbuild');
 	})
-	it('check string', () => {
+
+	it('check capitalize string', () => {
 		expect(capitalize('eLBUILD')).toBe('Elbuild');
+	})
+
+	it('check capitalize no value', () => {
+		expect(capitalize('')).toBe('');
 	})
 
 	it('check json', () => {
@@ -48,12 +53,32 @@ describe('string module', () => {
 		expect(underscore('ElBuild')).toBe('el_build');
 	})
 
+	it('check camelcase to underscore no value', () => {
+		expect(underscore('')).toBe('');
+	})
+
 	it('check replace label', () => {
 		expect(replaceGlobalLabel('Check replace test label', 'test', 'global')).toBe('Check replace global label');
 	})
 
 	it('check replace global label', () => {
 		expect(replaceGlobalLabel('fixCheck replace fixglobal labelfix', 'fix', '')).toBe('Check replace global label');
+	})
+
+	it('check replace global label no value', () => {
+		expect(replaceGlobalLabel('', 'fix', '')).toBe('');
+	})
+
+	it('check underscoreless', () => {
+		expect(underscoreless('check_underscoreless_elbuild',)).toBe('check underscoreless elbuild');
+	})
+
+	it('check underscoreless char', () => {
+		expect(underscoreless('check_underscoreless_elbuild', '-',)).toBe('check-underscoreless-elbuild');
+	})
+
+	it('check underscoreless no value', () => {
+		expect(underscoreless('',)).toBe('');
 	})
 
 })
