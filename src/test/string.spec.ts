@@ -1,4 +1,4 @@
-import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString } from '../modules/string';
+import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString, simpleLanguage } from '../modules/string';
 
 describe('string module', () => {
 	it('check empty string', () => {
@@ -89,5 +89,12 @@ describe('string module', () => {
 		expect(obscureString('',)).toBe('')
 	})
 
+	it('check simple language', () => {
+		expect(simpleLanguage('it-IT',)).toBe('it')
+	})
+
+	it('check simple language no value', () => {
+		expect(simpleLanguage('',)).toBe('')
+	})
 })
 

@@ -68,3 +68,11 @@ function obscureSingle(string: string): string {
 
 	return string;
 }
+
+export function simpleLanguage(value: string): string {
+	if (value) {
+		const lang = value.toLowerCase().split('-');
+		return lang[0];
+	}
+	return '';
+}
