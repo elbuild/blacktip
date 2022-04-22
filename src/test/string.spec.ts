@@ -1,4 +1,4 @@
-import { isNotBlank, leftPad, capitalize, isJson } from '../modules/string';
+import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel } from '../modules/string';
 
 describe('string module', () => {
 	it('check empty string', () => {
@@ -39,5 +39,22 @@ describe('string module', () => {
 	it('check number json', () => {
 		expect(isJson(5)).toBe(false);
 	})
+
+	it('check camelcase to underscore', () => {
+		expect(underscore('elBuild')).toBe('el_build');
+	})
+
+	it('check camelcase to underscore with titlecase', () => {
+		expect(underscore('ElBuild')).toBe('el_build');
+	})
+
+	it('check replace label', () => {
+		expect(replaceGlobalLabel('Check replace test label', 'test', 'global')).toBe('Check replace global label');
+	})
+
+	it('check replace global label', () => {
+		expect(replaceGlobalLabel('fixCheck replace fixglobal labelfix', 'fix', '')).toBe('Check replace global label');
+	})
+
 })
 

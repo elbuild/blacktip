@@ -28,3 +28,12 @@ export function isJson(item: any) {
 
 	return false;
 }
+
+export function underscore(value: string) {
+	return value.replace(/\.?([A-Z])/g, (x, y) => '_' + y.toLowerCase()).replace(/^_/, '');
+}
+
+export function replaceGlobalLabel(original: string, searchTxt: string, replaceTxt: string): string {
+	const regex = new RegExp(searchTxt, 'g');
+	return original.replace(regex, replaceTxt);
+}
