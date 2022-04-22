@@ -45,3 +45,26 @@ export function underscoreless(value: string, char: string = ' '): string {
 	if (!value) return value;
 	return value.replace(/_/g, char);
 }
+
+export function obscureString(string: string): string {
+	if (!string) return string;
+
+	const names = string.split(' ');
+	const regnames = [];
+	for (const n of names) {
+		regnames.push(obscureSingle(n));
+	}
+
+	return regnames.join(' ');
+}
+
+function obscureSingle(string: string): string {
+
+	const L = string.length;
+
+	for (let i = 1; i < L - 1; i++) {
+		string = string.substring(0, i) + '*' + string.substring(i + 1);
+	}
+
+	return string;
+}

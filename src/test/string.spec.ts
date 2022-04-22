@@ -1,4 +1,4 @@
-import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless } from '../modules/string';
+import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString } from '../modules/string';
 
 describe('string module', () => {
 	it('check empty string', () => {
@@ -79,6 +79,14 @@ describe('string module', () => {
 
 	it('check underscoreless no value', () => {
 		expect(underscoreless('',)).toBe('');
+	})
+
+	it('check obscure string', () => {
+		expect(obscureString('test elbuild',)).toBe('t**t e*****d')
+	})
+
+	it('check obscure string no value', () => {
+		expect(obscureString('',)).toBe('')
 	})
 
 })
