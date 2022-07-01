@@ -76,3 +76,17 @@ export function simpleLanguage(value: string): string {
 	}
 	return '';
 }
+
+export function checkAnonimize(value: any, first: boolean = false): boolean {
+	if (value) {
+		if (!first) return value.toString().charAt(0) === '*';
+		else return value.toString().charAt(0) !== '*' && value.toString().charAt(1) === '*';
+	}
+	return false;
+}
+
+export function validateEmail(email: string): boolean {
+	const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/;
+	return regex.test(email);
+}
+

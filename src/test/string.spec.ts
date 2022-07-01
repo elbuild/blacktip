@@ -1,4 +1,4 @@
-import { isNotBlank, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString, simpleLanguage } from '../modules/string';
+import { isNotBlank, validateEmail, checkAnonimize, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString, simpleLanguage } from '../modules/string';
 
 describe('string module', () => {
 	it('check empty string', () => {
@@ -95,6 +95,38 @@ describe('string module', () => {
 
 	it('check simple language no value', () => {
 		expect(simpleLanguage('',)).toBe('')
+	})
+
+	it('check anonimize', () => {
+		expect(checkAnonimize('*****')).toBe(true)
+	})
+
+	it('check anonimize first', () => {
+		expect(checkAnonimize('A****', true)).toBe(true)
+	})
+
+	it('check anonimize false', () => {
+		expect(checkAnonimize('elbuild')).toBe(false)
+	})
+
+	it('check anonimize false first', () => {
+		expect(checkAnonimize('elbuild', true)).toBe(false)
+	})
+
+	it('check anonimize novalue', () => {
+		expect(checkAnonimize('')).toBe(false)
+	})
+
+	it('check anonimize novalue first', () => {
+		expect(checkAnonimize('', true)).toBe(false)
+	})
+
+	it('check validate email', () => {
+		expect(validateEmail('prova@elbuild.it')).toBe(true)
+	})
+
+	it('check validate email false', () => {
+		expect(validateEmail('provaelbuild')).toBe(false)
 	})
 })
 
