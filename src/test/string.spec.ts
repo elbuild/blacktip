@@ -1,4 +1,4 @@
-import { isNotBlank, validateEmail, checkAnonimize, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString, simpleLanguage } from '../modules/string';
+import { isNotBlank, validateEmail, isURL, checkAnonimize, leftPad, capitalize, isJson, underscore, replaceGlobalLabel, underscoreless, obscureString, simpleLanguage } from '../modules/string';
 
 describe('string module', () => {
 	it('check empty string', () => {
@@ -127,6 +127,14 @@ describe('string module', () => {
 
 	it('check validate email false', () => {
 		expect(validateEmail('provaelbuild')).toBe(false)
+	})
+
+	it('check valid url', () => {
+		expect(isURL('https://www.elbuild.it/')).toBe(true)
+	})
+
+	it('check invalid url', () => {
+		expect(isURL('wwwelbuild,it')).toBe(false)
 	})
 })
 
